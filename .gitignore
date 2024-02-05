@@ -296,3 +296,5 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,android,androidstudio,java,kotlin,gradle
+/app/src/main/assets/efficientdet-lite0.tflite
+/app/src/main/assets/efficientdet-lite2.tflite
