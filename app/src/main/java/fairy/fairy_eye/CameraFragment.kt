@@ -40,6 +40,10 @@ import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
+class CameraDeniedFragment : Fragment(R.layout.fragment_camera_denied) {
+
+}
+
 class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
@@ -50,7 +54,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
         get() = _fragmentCameraBinding!!
 
     private lateinit var objectDetectorHelper: ObjectDetectorHelper
-    private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: CameraViewModel by activityViewModels()
     private var preview: Preview? = null
     private var imageAnalyzer: ImageAnalysis? = null
     private var camera: Camera? = null

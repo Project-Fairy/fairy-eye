@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/gemini"
+        android:contentDescription="@string/gemini"
+        android:icon="@drawable/baseline_android_24"
+        android:title="@string/gemini"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/setting"
+        android:contentDescription="@string/setting"
+        android:icon="@drawable/baseline_add_circle_24"
+        android:title="@string/setting"
+        app:showAsAction="always" />
+
+
+</menu>

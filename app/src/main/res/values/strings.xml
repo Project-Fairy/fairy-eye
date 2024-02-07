@@ -4,6 +4,9 @@
     <string name="sub_title">Sub Title</string>
     <string name="icon_image">Icon Image</string>
     <string name="alt_bottom_sheet_chevron">Bottom sheet expandable indicator</string>
+    <string name="camera_denied_text">Camera permission is required to run this app</string>
+
+    <string name="setting">Setting</string>
 
     <string name="alt_bottom_sheet_max_results_button_minus">Decreasing maxium detected results
         button</string>
@@ -24,6 +27,7 @@
     <string name="menu_gallery">Gallery</string>
     <string name="tv_gallery_placeholder">Click + to add an image or a video
         to begin running the object detection.</string>
+    <string name="gemini">Gemini</string>
 
     <string-array name="delegate_spinner_titles">
         <item>CPU</item>
