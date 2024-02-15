@@ -35,6 +35,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.mediapipe.tasks.vision.core.RunningMode
+import com.google.mediapipe.tasks.vision.objectdetector.ObjectDetectorResult
 import fairy.fairy_eye.databinding.FragmentCameraBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -44,7 +45,9 @@ class CameraDeniedFragment : Fragment(R.layout.fragment_camera_denied) {
 
 }
 
-class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
+class CameraFragment(
+    private val baseAdapterImpl: BaseAdapterImpl
+) : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     private val TAG = "ObjectDetection"
 
@@ -62,6 +65,7 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
     /** Blocking ML operations are performed using this executor */
     private lateinit var backgroundExecutor: ExecutorService
+
 
     override fun onResume() {
         super.onResume()
@@ -339,6 +343,9 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
 
                 // Pass necessary information to OverlayView for drawing on the canvas
                 val detectionResult = resultBundle.results[0]
+
+
+
                 if (isAdded) {
                     fragmentCameraBinding.overlay.setResults(
                         detectionResult,
@@ -346,6 +353,8 @@ class CameraFragment : Fragment(), ObjectDetectorHelper.DetectorListener {
                         resultBundle.inputImageWidth,
                         resultBundle.inputImageRotation
                     )
+
+                    baseAdapterImpl.updateList(detectionResult)
                 }
 
                 // Force a redraw

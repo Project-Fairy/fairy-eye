@@ -5,17 +5,28 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.TextView
+import com.google.mediapipe.tasks.vision.objectdetector.ObjectDetectorResult
 
-class BaseAdapterImpl(
-    private var arrayList: ArrayList<String>
-) : BaseAdapter() {
+class BaseAdapterImpl : BaseAdapter() {
+
+    data class Result(val category: String, val score: Float)
+
+    private var list: List<Result> = emptyList()
+
+    fun updateList(detectedList: ObjectDetectorResult) {
+        list = emptyList()
+        detectedList.detections().forEach {
+            list += Result(it.categories()[0].categoryName(), it.categories()[0].score())
+        }
+        notifyDataSetChanged()
+    }
 
     override fun getCount(): Int {
-        return arrayList.size
+        return list.size
     }
 
     override fun getItem(position: Int): Any {
-        return arrayList[position]
+        return list[position]
     }
 
     override fun getItemId(position: Int): Long {
@@ -29,7 +40,10 @@ class BaseAdapterImpl(
         }
 
         val textView = convertView.findViewById<TextView>(R.id.titleView)
-        textView?.text = arrayList[position]
+        val category = convertView.findViewById<TextView>(R.id.subTitleView)
+
+        textView?.text = list[position].category
+        category?.text = String.format("%.2f", list[position].score)
 
         return convertView
     }

@@ -16,10 +16,12 @@ import fairy.fairy_eye.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val cameraFragment = CameraFragment()
+    private val baseAdapterImpl = BaseAdapterImpl()
+    private val cameraFragment = CameraFragment(baseAdapterImpl)
     private val cameraDeniedFragment = CameraDeniedFragment()
     private val fragmentManager: FragmentManager = supportFragmentManager
     private var transition: FragmentTransaction = fragmentManager.beginTransaction()
+
 
     private val viewModel: MainViewModel by viewModels()
 
@@ -31,22 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar.toolbar)
 
-        val array = ArrayList<String>().apply {
-            add("Item 1")
-            add("Item 2")
-            add("Item 3")
-            add("Item 4")
-            add("Item 5")
-            add("Item 6")
-            add("Item 7")
-            add("Item 8")
-        }
-
-        binding.listView.adapter = BaseAdapterImpl(array)
-
-        binding.listView.setOnItemClickListener { parent, view, position, id ->
-            Toast.makeText(this, "Item Clicked : " + array[position], Toast.LENGTH_SHORT).show()
-        }
+        binding.listView.adapter = baseAdapterImpl
 
         transition.add(binding.fragmentContainer.id, cameraDeniedFragment)
         transition.commit()
