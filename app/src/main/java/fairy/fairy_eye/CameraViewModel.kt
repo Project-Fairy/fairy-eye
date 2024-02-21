@@ -26,7 +26,7 @@ class CameraViewModel : ViewModel() {
         ObjectDetectorHelper.THRESHOLD_DEFAULT
     private var _maxResults: Int =
         ObjectDetectorHelper.MAX_RESULTS_DEFAULT
-    private var _model: Int = ObjectDetectorHelper.MODEL_EFFICIENTDETV0
+    private var _model: Int = ObjectDetectorHelper.MODEL_CUSTOM
 
     val currentDelegate: Int get() = _delegate
     val currentThreshold: Float get() = _threshold

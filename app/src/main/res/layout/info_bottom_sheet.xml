@@ -218,7 +218,7 @@
                 android:minWidth="@dimen/bottom_sheet_spinner_model_min_width"
                 android:spinnerMode="dropdown"
                 android:theme="@style/BottomSheetSpinnerItemStyle"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:entries="@array/models_spinner_titles" />
 
         </RelativeLayout>

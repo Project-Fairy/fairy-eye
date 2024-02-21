@@ -217,6 +217,8 @@ class CameraFragment(
             viewModel.currentModel,
             false
         )
+        Toast.makeText(requireContext(), "Model: ${viewModel.currentModel}", Toast.LENGTH_SHORT).show()
+
         fragmentCameraBinding.bottomSheetLayout.spinnerModel.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -343,8 +345,6 @@ class CameraFragment(
 
                 // Pass necessary information to OverlayView for drawing on the canvas
                 val detectionResult = resultBundle.results[0]
-
-
 
                 if (isAdded) {
                     fragmentCameraBinding.overlay.setResults(
