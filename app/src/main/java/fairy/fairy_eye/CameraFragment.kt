@@ -35,7 +35,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import com.google.mediapipe.tasks.vision.core.RunningMode
-import com.google.mediapipe.tasks.vision.objectdetector.ObjectDetectorResult
 import fairy.fairy_eye.databinding.FragmentCameraBinding
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
@@ -217,7 +216,8 @@ class CameraFragment(
             viewModel.currentModel,
             false
         )
-        Toast.makeText(requireContext(), "Model: ${viewModel.currentModel}", Toast.LENGTH_SHORT).show()
+        Toast.makeText(requireContext(), "Model: ${viewModel.currentModel}", Toast.LENGTH_SHORT)
+            .show()
 
         fragmentCameraBinding.bottomSheetLayout.spinnerModel.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
@@ -339,6 +339,7 @@ class CameraFragment(
     // to scale and place bounding boxes properly through OverlayView
     override fun onResults(resultBundle: ObjectDetectorHelper.ResultBundle) {
         activity?.runOnUiThread {
+
             if (_fragmentCameraBinding != null) {
                 fragmentCameraBinding.bottomSheetLayout.inferenceTimeVal.text =
                     String.format("%d ms", resultBundle.inferenceTime)
@@ -353,6 +354,16 @@ class CameraFragment(
                         resultBundle.inputImageWidth,
                         resultBundle.inputImageRotation
                     )
+
+                    // result toast message
+                    var result = "Objects Detected:"
+                    detectionResult.detections().forEach {
+                        result += " ${it.categories()[0].categoryName()} "
+                    }
+                    if (!result.equals("Objects Detected:")) {
+                        Toast.makeText(requireContext(), result, Toast.LENGTH_SHORT).show()
+                        Log.d(TAG, "Objects Detected: $result")
+                    }
 
                     baseAdapterImpl.updateList(detectionResult)
                 }
