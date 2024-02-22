@@ -1,26 +1,31 @@
 # Fairy-eye
 
-> 사회적 약자를 위한 생활 보조 인공지능
+> Fairy-eye is Walking assistance application to help blind walk.
 
 |                        |                        |                        |
 |:----------------------:|:----------------------:|:----------------------:|
 | ![](./IMG/main_1.jpeg) | ![](./IMG/main_2.jpeg) | ![](./IMG/main_3.jpeg) |
 
-## 1. 프로젝트 소개
+## 1. Introduction
 
-## 2. 프로젝트 목표
+Walking assistance application to help blind walk.
+It detects and guides the conditions around users and assists their safety by warning of unexpected situations.
 
-## 3. 프로젝트 구성
 
-## 4. 프로젝트 결과
+## 2. How to build
 
-## 5. 프로젝트 활용
+Use Android Studio to build the project.
 
-## 6. 프로젝트 향후 계획
+1. Build -> Build Bundle(s) / APK(s) -> Build APK(s)
+2. APK file will be generated in `app/build/outputs/apk/debug/app-debug.apk`
+3. Install the APK file on your Android device.
 
-Google Gemini를 S24에 적용하여, On-Device 형식으로 구현해보는것이 목표
+## 3. Project Structure
 
-## 7. 프로젝트 참여자
+- Kotlin
+- Mediapipe
+
+## 4. Contributors
 
 <table>
    <tr>
@@ -64,6 +69,6 @@ Google Gemini를 S24에 적용하여, On-Device 형식으로 구현해보는것�
    </tr>
 </table>
 
-## 8. 프로젝트 라이센스
+## 5. License
 
 MIT License
